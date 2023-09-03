@@ -1,0 +1,34 @@
+
+
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <input type="text" class="form-control" 
+            [disabled]="!inEditMode"
+            #fullname
+            [value]="passInfo.fullname">
+        </div>
+        <div class="card-body">
+            <p class="m-0">
+                Check In Date : {{passInfo.checkInDate ? (passInfo.checkInDate | date ): 'Not Check In'}}
+            </p>
+            <p>
+                Children : {{passInfo.children?.length || 0}}
+            </p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button class="btn btn-primary"
+                *ngIf="!inEditMode" 
+                (click)="inEditMode=true">
+                Edit
+            </button>
+            <button class="btn btn-primary" 
+            *ngIf="inEditMode" 
+            (click)="inEditMode=false; onUpdatePassName(fullname.value)">
+                Done
+            </button>
+            <button class="btn btn-danger mx-3" (click)="onPassRemove(passInfo.id)">
+                Remove
+            </button>
+        </div>
+    </div>

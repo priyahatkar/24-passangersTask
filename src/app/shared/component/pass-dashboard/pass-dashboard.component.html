@@ -1,0 +1,16 @@
+
+<div class="col-md-6 offset-md-3 mt-4">
+    
+    <app-pass-count [allPassCount]="passengersArray.length"[getCountPass]="checkInCount" >
+    </app-pass-count>
+
+    <p class="alert alert-dark my-3" *ngFor="let pass of passengersArray">
+        {{pass.fullname}}
+    </p>
+    
+    <!-- passenger card -->
+    <app-pass-card [passInfo]="pass" *ngFor="let pass of passengersArray"
+    (emitCardInfo)="getCheckInCount()">
+
+    </app-pass-card>
+</div>
